@@ -12,3 +12,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
         res.send(req.body);
 });
+
+app.listen(1818, () => {
+        console.log('run on 1818');
+});
