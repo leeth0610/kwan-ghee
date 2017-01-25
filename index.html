@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>교수님을 선택해보자</title>
+    <script language="javascript">
+        var pro1 = document.getElementById("pro1").value;
+        var pro2 = document.getElementById("pro2").value;
+
+        $("submitBtn").click(function(){
+            $.post("/", {pro1: pro1, pro2: pro2}, function(data, status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <input type="radio" id="pro1" name="name" checked="checked"/> 김종찬
+        <input type="radio" id="pro2" name="name" checked="checked"/> 김차종
+        <input type="button" id="submitBtn" value="제출"/>
+    </div>
+</body>
+</html>
