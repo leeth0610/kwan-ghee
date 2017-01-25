@@ -1,24 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>교수님을 선택해보자</title>
-    <script language="javascript">
-        var pro1 = document.getElementById("pro1").value;
-        var pro2 = document.getElementById("pro2").value;
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script language="javascript" type="text/javascript">
 
-        $("submitBtn").click(function(){
-            $.post("/", {pro1: pro1, pro2: pro2}, function(data, status){
-                alert("Data: " + data + "\nStatus: " + status);
-            });
+        $(function () {
+            $('.submitBtn').click(function () {
+                var data1 = $("input[id='pro1']").is(":checked");
+                var data2 = $("input[id='pro2']").is(":checked");
+
+                if (!(data1 || data2)) {
+                    alert("선택 해");
+
+                    return;
+                }
+                $.post(
+                        "/index.html",
+                        {data: [data1, data2]},
+                        function (data, status) {
+                            alert(data, status);
+                        }
+                )
+            })
         });
     </script>
 </head>
 <body>
-    <div>
-        <input type="radio" id="pro1" name="name" checked="checked"/> 김종찬
-        <input type="radio" id="pro2" name="name" checked="checked"/> 김차종
-        <input type="button" id="submitBtn" value="제출"/>
-    </div>
+<form>
+    <input type="radio" id="pro1" name="name"/> 김종찬
+    <input type="radio" id="pro2" name="name"/> 김차종
+</form>
+<button class="submitBtn">제출</button>
 </body>
 </html>
