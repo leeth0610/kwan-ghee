@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
-        res.send('fuck');
+        res.sendFile('./index.html');
 });
 
 app.post('/', (req, res) => {
