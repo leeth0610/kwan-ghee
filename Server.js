@@ -19,6 +19,11 @@ app.post('/index.html', (req, res) => {
         res.send(str);
 });
 
+app.post('/core/login', (req, res) => {
+        console.log(req.url);
+        console.log(req.body);
+});
+
 app.listen(1818, () => {
         console.log('run on 1818');
 });
